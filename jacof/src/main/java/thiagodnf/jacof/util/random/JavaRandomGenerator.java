@@ -10,12 +10,12 @@ public class JavaRandomGenerator implements PseudoRandomGenerator {
 
 	private static final String name = "JavaRandomGenerator";
 
-	/** Constructor */
+	/* Constructor */
 	public JavaRandomGenerator() {
 		this(System.currentTimeMillis());
 	}
 
-	/** Constructor */
+	/* Constructor */
 	public JavaRandomGenerator(long seed) {
 		this.seed = seed;
 		rnd = new Random(seed);

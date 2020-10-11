@@ -39,6 +39,7 @@ public class QSelection extends PseudoRandomProportionalRule {
 	 * Constructor by using RouletteWheel as default ant selection
 	 * 
 	 * @param aco The ant colony optimization used
+	 * @param q0 The ant colony optimization used
 	 */
 	public QSelection(ACO aco, double q0) {
 		this(aco, new RouletteWheel(), q0);

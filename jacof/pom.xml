@@ -131,6 +131,7 @@
 				<configuration>
 					<additionalparam>${javadoc.opts}</additionalparam>
 					<encoding>UTF-8</encoding>
+					<failOnError>false</failOnError>
 				</configuration>
 			</plugin>
 			<plugin>
