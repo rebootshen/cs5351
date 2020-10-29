@@ -29,11 +29,26 @@ import com.eliasnogueira.enums.RoomType;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import com.eliasnogueira.page.booking.common.NavigationPage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class RoomPage extends NavigationPage {
+
+    @FindBy(xpath = "//*[@id='captain']/h4")
+    private WebElement roomTypeDescription;
 
     @Step
     public void selectRoomType(RoomType room) {
         DriverManager.getDriver().findElement(By.xpath("//h6[text()='" + room + "']")).click();
+    }
+
+    @Step
+    public boolean isChecked(RoomType room) {
+        WebElement input = DriverManager.getDriver().findElement(By.xpath("//div[h6[text()='" + room + "']]/input"));
+        return "true".equals(input.getAttribute("checked"));
+    }
+
+    public String getRoomTypeDescriptionMsg() {
+        return roomTypeDescription.getText();
     }
 }

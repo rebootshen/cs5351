@@ -36,6 +36,9 @@ public class DetailPage extends NavigationPage {
     @FindBy(id = "description")
     private WebElement roomDescription;
 
+    @FindBy(xpath = "//*[@id=\"description\"]/div/h4")
+    private WebElement roomDescriptionMsg;
+
     @FindBy(css = "#message > p")
     private WebElement message;
 
@@ -47,5 +50,9 @@ public class DetailPage extends NavigationPage {
     @Step
     public String getAlertMessage() {
         return message.getText();
+    }
+
+    public String getDescriptionMsg() {
+        return roomDescriptionMsg.getText();
     }
 }

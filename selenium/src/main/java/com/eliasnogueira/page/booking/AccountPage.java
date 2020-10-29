@@ -71,4 +71,8 @@ public class AccountPage extends NavigationPage {
     public void clickNewsletter() {
         newsletter.click();
     }
+
+    public String getEmail() {
+        return this.email.getAttribute("value");
+    }
 }
