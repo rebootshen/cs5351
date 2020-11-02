@@ -7,3 +7,4 @@
 # Ignore build files.
 .DS_Store
 target/
+**/allure-results

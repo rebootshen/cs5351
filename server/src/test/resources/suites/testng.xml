@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<!--suite name="My Suite" verbose="2"  parallel="tests" thread-count="10">
+    <test name="Some Workflow Tests" parallel="none" preserve-order="true"-->
+<suite name="Automation Test Suite" verbose="2">
+    <listeners>
+        <!--listener class-name="reports.CustomisedListener"></listener-->
+        <listener class-name="cs.test_automation.reports.CustomisedReports" />
+    </listeners>
+    <test name="End To End Tests" parallel="none" preserve-order="true">
+        <classes>
+			<class name="cs.test_automation.Test22Test"/>
+            <class name="cs.test_automation.Test11Test"/>
+            <class name="cs.test_automation.TestNGTest"/>
+            <!--class name="cs.test_automation.BookRoomWebTest"/-->
+            
+            
+        </classes>
+    </test>
+</suite>
