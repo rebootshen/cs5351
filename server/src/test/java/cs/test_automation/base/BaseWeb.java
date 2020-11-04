@@ -50,7 +50,6 @@ public abstract class BaseWeb {
     @Parameters("browser")
     public void preCondition(@Optional("chrome") String browser) {
         Configuration configuration = ConfigurationManager.getConfiguration();
-
         DriverFactory driverFactory = new DriverFactory();
         WebDriver driver = driverFactory.createInstance(browser);
         DriverManager.setDriver(driver);

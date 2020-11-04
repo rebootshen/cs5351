@@ -4,14 +4,14 @@
 <suite name="Automation Test Suite" verbose="2">
     <listeners>
         <!--listener class-name="reports.CustomisedListener"></listener-->
-        <listener class-name="cs.test_automation.reports.CustomisedReports" />
+        <!--listener class-name="cs.test_automation.reports.CustomisedReports" /-->
     </listeners>
     <test name="End To End Tests" parallel="none" preserve-order="true">
         <classes>
 			<class name="cs.test_automation.Test22Test"/>
             <class name="cs.test_automation.Test11Test"/>
-            <class name="cs.test_automation.TestNGTest"/>
-            <!--class name="cs.test_automation.BookRoomWebTest"/-->
+            <!--class name="cs.test_automation.TestNGTest"/-->
+            <class name="cs.test_automation.CityUTest"/>
             
             
         </classes>
