@@ -4,7 +4,8 @@
 <suite name="Automation Test Suite" verbose="2">
     <listeners>
         <!--listener class-name="reports.CustomisedListener"></listener-->
-        <listener class-name="cs.test_automation.reports.CustomisedReports" />
+        <!--listener class-name="cs.test_automation.reports.CustomisedReporter" /-->
+        <listener class-name="cs.test_automation.reports.PowerReporter" />
     </listeners>
     <test name="End To End Tests" parallel="none" preserve-order="true">
         <classes>

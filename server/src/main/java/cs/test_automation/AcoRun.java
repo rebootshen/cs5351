@@ -14,13 +14,22 @@ public class AcoRun {
 
 	/** The class logger*/
 	static final Logger LOGGER = Logger.getLogger(AcoRun.class);
-	
+
+
+	public void generateTspDataFile() {
+
+		
+		System.out.println("Sorry, now is empty. Content of StringBuffer written to File.");
+	}
+
 	public static void main(String[] args) throws ParseException, IOException {
 
 		System.out.println("AcoRun !");
+		AcoRun acorun = new AcoRun();
+		acorun.generateTspDataFile();
 		
 		//String instance = "src/main/resources/problems/tsp/oliver30.tsp";
-		String instance = "src/main/resources/problems/tsp/cityu10.tsp";
+		String instance = "target/classes/problems/tsp/ttt.tsp";
 
 		Problem problem = new TravellingSalesmanProblem(instance);
 

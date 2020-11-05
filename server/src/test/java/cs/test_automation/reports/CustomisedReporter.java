@@ -17,8 +17,8 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-public class CustomisedReports implements IReporter {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CustomisedReports.class);
+public class CustomisedReporter implements IReporter {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomisedReporter.class);
 
     private static final String ROW_TEMPLATE = "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>";
 
