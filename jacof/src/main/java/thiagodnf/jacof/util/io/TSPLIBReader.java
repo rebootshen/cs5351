@@ -13,6 +13,7 @@ public class TSPLIBReader {
 	protected InstanceReader reader;
 
 	private int dimension;
+	private String type;
 
 	protected double[][] coord;
 
@@ -39,8 +40,12 @@ public class TSPLIBReader {
 
 			if (key.equalsIgnoreCase("DIMENSION")) {
 				dimension = Integer.valueOf(split[1].trim());
+			}else if (key.equalsIgnoreCase("EDGE_WEIGHT_TYPE")) {
+				type = String.valueOf(split[1].trim());
 			}
 
+			
+			System.out.println("====Type:"+type);
 			line = reader.readLine();
 
 			if (line == null) {
@@ -77,11 +82,25 @@ public class TSPLIBReader {
 					double x2 = coord[j][1];
 					double y2 = coord[j][2];
 
-					distance[i][j] = euclideanDistance(x1, y1, x2, y2);
+					if("EUC_2D".contains(type)){
+						distance[i][j] = euclideanDistance(x1, y1, x2, y2);
+					}else{
+						distance[i][j] = costBenefitDistance(x1, y1, x2, y2);
+					}
+					
+					System.out.println("distance["+i+"]["+j+"]:"+distance[i][j]);
 					distance[j][i] = distance[i][j];
 				}
 			}
 		}
+	}
+
+	public static double costBenefitDistance(double x1, double y1, double x2, double y2) {
+		double xDistance = Math.abs(x1 + x2);
+		double yDistance = Math.abs(y1 + y2);
+		double a = 10;
+
+		return yDistance /(a * xDistance);
 	}
 
 	public static double euclideanDistance(double x1, double y1, double x2, double y2) {

@@ -19,18 +19,19 @@ public class AcoRun {
 
 		System.out.println("AcoRun !");
 		
-		String instance = "src/main/resources/problems/tsp/oliver30.tsp";
+		//String instance = "src/main/resources/problems/tsp/oliver30.tsp";
+		String instance = "src/main/resources/problems/tsp/cityu10.tsp";
 
 		Problem problem = new TravellingSalesmanProblem(instance);
 
 		RankBasedAntSystem aco = new RankBasedAntSystem(problem);
 
-		aco.setNumberOfAnts(30);
+		aco.setNumberOfAnts(10);
 		aco.setNumberOfIterations(50);
 		aco.setAlpha(1.0);
 		aco.setBeta(2.0);
 		aco.setRho(0.1);
-		aco.setWeight(30);
+		aco.setWeight(10);
 		
 		ExecutionStats es = ExecutionStats.execute(aco, problem);
 		es.printStats();

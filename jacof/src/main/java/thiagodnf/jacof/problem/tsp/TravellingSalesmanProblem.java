@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import thiagodnf.jacof.problem.Problem;
 import thiagodnf.jacof.util.NearestNeighbour;
@@ -66,7 +67,16 @@ public class TravellingSalesmanProblem extends Problem {
 	}
 	
 	public int[] getTheBestSolution(){
-		return new int[]{0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,23,25,26,27,28,29,1, 0};
+		//int [] myIntArray = new int[]{0,2,3,4,5,6,7,8,9,1,0}; //
+		int [] myIntArray =IntStream.range(0, numberOfCities+1).toArray();
+		myIntArray[numberOfCities]=0;
+		System.out.println(Arrays.toString(myIntArray));
+		return myIntArray;
+
+		//return new int[]{0,2,3,4,5,6,7,8,9,1,0};
+		//return new int[]{0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,23,25,26,27,28,29,1, 0};
+
+		
 	}
 	
 	@Override
@@ -74,12 +84,16 @@ public class TravellingSalesmanProblem extends Problem {
 		
 		double totalDistance = 0;
 
+		//System.out.println("evaluate:======= solution.length:"+solution.length+" numberOfCities:"+numberOfCities);
+
 		for (int h = 1; h < solution.length; h++) {
 			
 			int i = solution[h - 1];
 			int j = solution[h];
 			
+			//System.out.println("evaluate:======= distance["+i+"]["+j+"]");
 			totalDistance += distance[i][j];
+			//System.out.println("evaluate:======= distance["+i+"]["+j+"]:"+distance[i][j]);
 		}
 		
 		return totalDistance;
