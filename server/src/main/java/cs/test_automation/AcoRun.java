@@ -9,6 +9,9 @@ import thiagodnf.jacof.aco.RankBasedAntSystem;
 import thiagodnf.jacof.problem.Problem;
 import thiagodnf.jacof.problem.tsp.TravellingSalesmanProblem;
 import thiagodnf.jacof.util.ExecutionStats;
+import cs.test_automation.reports.TestNGFile;
+
+import java.util.Arrays;
 
 public class AcoRun {
 
@@ -16,20 +19,20 @@ public class AcoRun {
 	static final Logger LOGGER = Logger.getLogger(AcoRun.class);
 
 
-	public void generateTspDataFile() {
+	// public void generateTspDataFile() {
 
 		
-		System.out.println("Sorry, now is empty. Content of StringBuffer written to File.");
-	}
+	// 	System.out.println("Sorry, now is empty. Content of StringBuffer written to File.");
+	// }
 
 	public static void main(String[] args) throws ParseException, IOException {
 
 		System.out.println("AcoRun !");
-		AcoRun acorun = new AcoRun();
-		acorun.generateTspDataFile();
+		TestNGFile ngFile = new TestNGFile();
+		//acorun.generateTspDataFile();
 		
 		//String instance = "src/main/resources/problems/tsp/oliver30.tsp";
-		String instance = "target/classes/problems/tsp/ttt.tsp";
+		String instance = "src/main/resources/problems/tsp/cityu-new10.tsp";
 
 		Problem problem = new TravellingSalesmanProblem(instance);
 
@@ -44,6 +47,9 @@ public class AcoRun {
 		
 		ExecutionStats es = ExecutionStats.execute(aco, problem);
 		es.printStats();
+
+		System.out.println(Arrays.toString(es.bestSolution));
+		ngFile.generateTestNGFile(es.bestSolution);
 	}
 
 }

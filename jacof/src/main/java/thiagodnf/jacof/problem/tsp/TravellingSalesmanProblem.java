@@ -48,8 +48,8 @@ public class TravellingSalesmanProblem extends Problem {
 		
 		this.cnn = evaluate(nn.solve(this));
 
-		System.out.println("Best Solution: " + Arrays.toString(getTheBestSolution()));
-		System.out.println("Best Value: " + evaluate(getTheBestSolution()));
+		System.out.println("1 Best Solution: " + Arrays.toString(getTheBestSolution()));
+		System.out.println("1 Best Value: " + evaluate(getTheBestSolution()));
 	}
 	
 	@Override

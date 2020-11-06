@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Automation Test Suite" verbose="2">
+<listeners>
+<listener class-name="cs.test_automation.reports.PowerReporter" />
+</listeners>
+<test name="End To End Tests" parallel="none" preserve-order="true">
+<classes>
+<class name="cs.test_automation.CityU02Test"/>
+<class name="cs.test_automation.CityU04Test"/>
+<class name="cs.test_automation.CityU10Test"/>
+<class name="cs.test_automation.CityU05Test"/>
+<class name="cs.test_automation.CityU01Test"/>
+<class name="cs.test_automation.CityU09Test"/>
+<class name="cs.test_automation.CityU03Test"/>
+<class name="cs.test_automation.CityU06Test"/>
+<class name="cs.test_automation.CityU07Test"/>
+<class name="cs.test_automation.CityU08Test"/>
+</classes>
+</test>
+</suite>

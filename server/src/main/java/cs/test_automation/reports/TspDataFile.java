@@ -10,7 +10,7 @@ import java.util.*;
 import java.net.URL;
 import java.net.URI;
 import java.net.URISyntaxException;
-import org.testng.log4testng.Logger;
+import org.apache.log4j.Logger;
 
 public class TspDataFile {
 	private static final Logger L = Logger.getLogger(TspDataFile.class);
@@ -31,7 +31,7 @@ public class TspDataFile {
 				return index+" "+split[1].trim()+ " "+split[2].trim()+"\n";
 			}
 		}
-		return "0 "+split[1].trim()+ " "+split[2].trim()+"\n";
+		return "";
 	}
 
 	private List<String> fileList() {
@@ -52,16 +52,18 @@ public class TspDataFile {
 	}
 
 	private File getFileFromURL() {
-		URL url = this.getClass().getResource("/problems/tsp");
+
+		//URL url = this.getClass().getResource("/problems/tsp");
 
 		//URL url = this.getClass().getClassLoader().getResource("/ttt.tsp");
 		File file = null;
 		try {
-			File parentDirectory = new File(new URI(url.toString()));
-			file = new File(parentDirectory, "ttt.tsp");
-			//file = new File(url.toURI());
-		} catch (URISyntaxException e) { 
-			file = new File(url.getPath());
+			//File parentDirectory = new File(new URI(url.toString()));
+			//file = new File(parentDirectory, "ttt.tsp");
+
+			file = new File("src/main/resources/problems/tsp/cityu-new10.tsp");
+		} catch (Exception e) { 
+			//file = new File(url.getPath());
 			L.error("output tsp data file", e);
 		} finally {
 			return file;
@@ -82,8 +84,10 @@ public class TspDataFile {
 				index ++;
 				//System.out.println(element);
 				s = replaceWithOrder(element);
-				//System.out.println("new line:"+s);
-				tspBuffer.append(s);
+				if(!s.equals("")){
+					//System.out.println("new line:"+s);
+					tspBuffer.append(s);
+				}
 			}
 			//write contents of StringBuffer to a file
 			bwr.write(tspBuffer.toString());
