@@ -31,6 +31,8 @@ public class TravellingSalesmanProblem extends Problem {
 	
 	/** Nearest Neighbour heuristic */
 	protected double cnn;
+
+	protected String type;
 	
 	public TravellingSalesmanProblem(String filename) throws IOException {
 		this(filename, false);
@@ -41,6 +43,7 @@ public class TravellingSalesmanProblem extends Problem {
 		TSPLIBReader r = new TSPLIBReader(new InstanceReader(new File(filename)));
 		
 		numberOfCities = r.getDimension();
+		type = r.getType();
 		
 		distance = r.getDistance();		
 				
@@ -67,10 +70,15 @@ public class TravellingSalesmanProblem extends Problem {
 	}
 	
 	public int[] getTheBestSolution(){
-		//int [] myIntArray = new int[]{0,2,3,4,5,6,7,8,9,1,0}; //
-		int [] myIntArray =IntStream.range(0, numberOfCities+1).toArray();
-		myIntArray[numberOfCities]=0;
-		System.out.println(Arrays.toString(myIntArray));
+		int [] myIntArray = null;
+
+		if("EUC_2D".contains(type)){
+			myIntArray =IntStream.range(0, numberOfCities+1).toArray();
+			myIntArray[numberOfCities]=0;
+		}else{
+			myIntArray =IntStream.range(0, numberOfCities).toArray();
+		}
+		System.out.println("getTheBest:" +Arrays.toString(myIntArray));
 		return myIntArray;
 
 		//return new int[]{0,2,3,4,5,6,7,8,9,1,0};
@@ -136,12 +144,15 @@ public class TravellingSalesmanProblem extends Problem {
 
 	@Override
 	public List<Integer> updateNodesToVisit(List<Integer> tour, List<Integer> nodesToVisit) {
-		
-		if (nodesToVisit.isEmpty()) {
-			if (!tour.get(0).equals(tour.get(tour.size() - 1))) {
-				nodesToVisit.add(tour.get(0));
+		//System.out.println(type);
+		if("EUC_2D".contains(type)){
+			if (nodesToVisit.isEmpty()) {
+				if (!tour.get(0).equals(tour.get(tour.size() - 1))) {
+					nodesToVisit.add(tour.get(0));
+				}
 			}
 		}
+
 		
 		return nodesToVisit;
 	}	

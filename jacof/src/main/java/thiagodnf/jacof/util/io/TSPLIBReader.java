@@ -117,4 +117,8 @@ public class TSPLIBReader {
 	public double[][] getDistance() {
 		return distance;
 	}
+
+	public String getType() {
+		return type;
+	}
 }

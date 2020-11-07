@@ -10,6 +10,8 @@ import java.util.Observable;
 import thiagodnf.jacof.aco.ACO;
 import thiagodnf.jacof.aco.ant.initialization.AbstractAntInitialization;
 
+import org.apache.log4j.Logger;
+
 /**
  * This class represents an ant and its process of building a solution
  * for a given addressed problem.
@@ -43,6 +45,9 @@ public class Ant extends Observable implements Runnable{
 	/** The ant initialization */
 	protected AbstractAntInitialization antInitialization;
 	
+	/** The class logger*/
+	static final Logger LOGGER = Logger.getLogger(Ant.class);
+
 	/**
 	 * Constructor
 	 * 
@@ -88,6 +93,7 @@ public class Ant extends Observable implements Runnable{
 
 		// The search ends when the list of nodes to visit is empty
 		while (!nodesToVisit.isEmpty()) {
+			
 
 			// Get the next node given the current node
 			int nextNode = aco.getAntExploration().getNextNode(this, currentNode);
@@ -109,9 +115,13 @@ public class Ant extends Observable implements Runnable{
 
 			// update the list of the nodes to visit
 			nodesToVisit = aco.getProblem().updateNodesToVisit(tour, nodesToVisit);
-
+			//LOGGER.debug(nodesToVisit);
+			
 			// Define the next node as current node
 			currentNode = nextNode;
+
+			//LOGGER.debug(tour);
+			
 		}
 	}
 			
