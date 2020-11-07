@@ -1,5 +1,6 @@
 package com.eliasnogueira.test;
 
+import java.io.File;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,6 +9,7 @@ import com.eliasnogueira.BaseWeb;
 
 import com.eliasnogueira.page.cityu.RequirementPage;
 import com.eliasnogueira.page.cityu.TpgAdmissionPage;
+import com.eliasnogueira.ultil.ScreenShotUltil;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -109,5 +111,20 @@ public class CityUTest extends BaseWeb {
         RequirementPage requirementPage = new RequirementPage();
 
         assertThat(requirementPage.getGer().getText()).isEqualTo("General Entrance Requirements");
+    }
+
+    @Test(description = "Take screenshot")
+    public void testTakeScreenShot() {
+        boolean isSuccess = ScreenShotUltil.takeScreenShot(
+                "/tmp/screenshot.png");
+        assertThat(isSuccess).isEqualTo(true);
+    }
+
+    @Test(description = "Compare screenshot")
+    public void testCompareScreenshot() {
+        File origin = ScreenShotUltil.takeScreenShot();
+        File incoming = ScreenShotUltil.takeScreenShot();
+
+        assertThat(ScreenShotUltil.compareScreenShot(origin, incoming)).isEqualTo(true);
     }
 }
