@@ -33,9 +33,7 @@ public class AcoRun {
 		
 		//String instance = "src/main/resources/problems/tsp/oliver30.tsp";
 		String instance = "src/main/resources/problems/tsp/cityu-new10.tsp";
-
 		Problem problem = new TravellingSalesmanProblem(instance);
-
 		RankBasedAntSystem aco = new RankBasedAntSystem(problem);
 
 		aco.setNumberOfAnts(10);

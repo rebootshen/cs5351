@@ -76,10 +76,12 @@ public class TestNGFile {
 			String s = null;
 			int size = bestSolution.length;
 			int index = 0;
+			//System.out.println(bestSolution);
 			for (int order: bestSolution) {
 				index ++;
 				s = replaceWithOrder(order);
-				if(!s.equals("") && (index < size)){
+				//System.out.println("from route:"+order);
+				if(!s.equals("") && (index <= size)){
 					//System.out.println("new line:"+s);
 					xmlBuffer.append(s+"\n");
 				}
