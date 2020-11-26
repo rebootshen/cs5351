@@ -19,7 +19,6 @@ public class TpgAdmissionPage extends AbstractPageObject {
 
     @Step
     public void clickMenu(String menu) {
-        WebDriver driver = DriverManager.getDriver();
         tpgMenus.stream().filter(p -> p.getText().equals(menu)).findAny().get().click();
         try {
             Thread.sleep(1000);

@@ -27,10 +27,15 @@ package com.eliasnogueira.page;
 import com.eliasnogueira.config.Configuration;
 import com.eliasnogueira.config.ConfigurationManager;
 import com.eliasnogueira.driver.DriverManager;
+import com.eliasnogueira.ultil.ScreenShotUltil;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class AbstractPageObject {
+
+    public boolean takeScreenshot(String fileName) {
+        return ScreenShotUltil.takeScreenShot(fileName);
+    }
 
     protected AbstractPageObject() {
         Configuration configuration = ConfigurationManager.getConfiguration();
