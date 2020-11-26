@@ -8,13 +8,13 @@
 <class name="cs.test_automation.CityU03Test"/>
 <class name="cs.test_automation.CityU02Test"/>
 <class name="cs.test_automation.CityU10Test"/>
-<class name="cs.test_automation.CityU05Test"/>
 <class name="cs.test_automation.CityU07Test"/>
 <class name="cs.test_automation.CityU06Test"/>
-<class name="cs.test_automation.CityU09Test"/>
-<class name="cs.test_automation.CityU04Test"/>
 <class name="cs.test_automation.CityU01Test"/>
+<class name="cs.test_automation.CityU09Test"/>
 <class name="cs.test_automation.CityU08Test"/>
+<class name="cs.test_automation.CityU05Test"/>
+<class name="cs.test_automation.CityU04Test"/>
 </classes>
 </test>
 </suite>
