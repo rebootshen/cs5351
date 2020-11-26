@@ -2,10 +2,10 @@
 
 This project is a multiple module maven project.
 
-selenium/           : framework to build automation test cases
-jacof/              : algorithm to solve TSP problem
-server/             : main class hold here to generate TSP data file and testng config file
-pom.xml             : maven-surefire-plugin and exec-maven-plugin will trigger main processes
+- selenium/           : framework to build automation test cases
+- jacof/              : algorithm to solve TSP problem
+- server/             : main class hold here to generate TSP data file and testng config file
+- pom.xml             : maven-surefire-plugin and exec-maven-plugin will trigger main processes
 
 
 ## Prerequisite:
@@ -19,13 +19,13 @@ java version "1.8.0_241"
 
 
 ## Commands:
-
+```
 cd server
 server (master) $
 server (master) $ cd ../selenium; mvn install -DskipTests=true; cd ../server;
 server (master) $ cd ../jacof; mvn install -DskipTests=true; cd ../server;
 server (master) $ mvn test
-
+```
 
 ## How it works?
 After "mvn test", 2 main plugins will be triggered and 2 important tasks will run one after another.
