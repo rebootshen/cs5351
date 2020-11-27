@@ -36,17 +36,7 @@ public class TestNGFile {
 
 	private List<String> fileList() {
 		List<String> results = new ArrayList<String>();
-		String folder = null;
-
-		String str1 = Paths.get(".").toAbsolutePath().normalize().toString();
-		boolean var1 = str1.endsWith("server");
-		System.out.println("Current relative path is in server: " + var1);
-
-		if (str1.endsWith("server")) {
-			folder = "src/test/java/cs/test_automation";
-		}else{
-			folder = "server/src/test/java/cs/test_automation";
-		}
+		String folder = getFileWithModule("src/test/java/cs/test_automation");
 
 		File[] files = new File(folder).listFiles((dir, name) -> name.endsWith("Test.java"));
 		//If this pathname does not denote a directory, then listFiles() returns null. 
@@ -68,13 +58,7 @@ public class TestNGFile {
 		try {
 			//File parentDirectory = new File(new URI(url.toString()));
 
-			String testngfile = null;
-			String str1 = Paths.get(".").toAbsolutePath().normalize().toString();
-			if (str1.endsWith("server")) {
-				testngfile = "src/main/resources/suites/testng-new.xml";
-			}else{
-				testngfile = "server/src/main/resources/suites/testng-new.xml";
-			}
+			String testngfile = getFileWithModule("src/main/resources/suites/testng-new.xml");
 			file = new File(testngfile);
 			//file = new File(parentDirectory, "testng-new.xml");
 			//file = new File(url.toURI());
@@ -84,6 +68,17 @@ public class TestNGFile {
 		} finally {
 			return file;
 		}
+	}
+
+	private String getFileWithModule(String name){
+		String filename = null;
+		String str1 = Paths.get(".").toAbsolutePath().normalize().toString();
+		if (str1.endsWith("server")) {
+			filename = name;
+		}else{
+			filename = "server/"+name;
+		}
+		return filename;
 	}
 
 	public void generateTestNGFile(int[] bestSolution) {

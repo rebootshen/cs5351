@@ -10,6 +10,7 @@ import java.util.*;
 import java.net.URL;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import org.apache.log4j.Logger;
 
 public class TspDataFile {
@@ -37,8 +38,9 @@ public class TspDataFile {
 	private List<String> fileList() {
 		List<String> results = new ArrayList<String>();
 
+		String folder = getFileWithModule("src/test/java/cs/test_automation");
 
-		File[] files = new File("src/test/java/cs/test_automation").listFiles((dir, name) -> name.endsWith("Test.java"));
+		File[] files = new File(folder).listFiles((dir, name) -> name.endsWith("Test.java"));
 		//If this pathname does not denote a directory, then listFiles() returns null. 
 
 		Arrays.sort(files);
@@ -53,21 +55,27 @@ public class TspDataFile {
 
 	private File getFileFromURL() {
 
-		//URL url = this.getClass().getResource("/problems/tsp");
-
-		//URL url = this.getClass().getClassLoader().getResource("/ttt.tsp");
 		File file = null;
 		try {
-			//File parentDirectory = new File(new URI(url.toString()));
-			//file = new File(parentDirectory, "ttt.tsp");
+			String tspfile = getFileWithModule("src/main/resources/problems/tsp/cityu-new10.tsp");
 
-			file = new File("src/main/resources/problems/tsp/cityu-new10.tsp");
+			file = new File(tspfile);
 		} catch (Exception e) { 
-			//file = new File(url.getPath());
 			L.error("output tsp data file", e);
 		} finally {
 			return file;
 		}
+	}
+
+	private String getFileWithModule(String name){
+		String filename = null;
+		String str1 = Paths.get(".").toAbsolutePath().normalize().toString();
+		if (str1.endsWith("server")) {
+			filename = name;
+		}else{
+			filename = "server/"+name;
+		}
+		return filename;
 	}
 
 	public void generateTspDataFile(List<String> testClasses) {
