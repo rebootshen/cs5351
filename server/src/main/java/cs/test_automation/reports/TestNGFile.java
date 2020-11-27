@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.net.URL;
 import java.net.URI;
+import java.nio.file.Paths;
 import java.net.URISyntaxException;
 import org.apache.log4j.Logger;
 
@@ -35,9 +36,19 @@ public class TestNGFile {
 
 	private List<String> fileList() {
 		List<String> results = new ArrayList<String>();
+		String folder = null;
 
+		String str1 = Paths.get(".").toAbsolutePath().normalize().toString();
+		boolean var1 = str1.endsWith("server");
+		System.out.println("Current relative path is in server: " + var1);
 
-		File[] files = new File("src/test/java/cs/test_automation").listFiles((dir, name) -> name.endsWith("Test.java"));
+		if (str1.endsWith("server")) {
+			folder = "src/test/java/cs/test_automation";
+		}else{
+			folder = "server/src/test/java/cs/test_automation";
+		}
+
+		File[] files = new File(folder).listFiles((dir, name) -> name.endsWith("Test.java"));
 		//If this pathname does not denote a directory, then listFiles() returns null. 
 
 		Arrays.sort(files);

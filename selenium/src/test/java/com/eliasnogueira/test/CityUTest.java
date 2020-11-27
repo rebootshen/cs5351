@@ -113,12 +113,12 @@ public class CityUTest extends BaseWeb {
         assertThat(requirementPage.getGer().getText()).isEqualTo("General Entrance Requirements");
     }
 
-    @Test(description = "Take screenshot")
-    public void testTakeScreenShot() {
-        boolean isSuccess = ScreenShotUltil.takeScreenShot(
-                "/tmp/screenshot.png");
-        assertThat(isSuccess).isEqualTo(true);
-    }
+    // @Test(description = "Take screenshot")
+    // public void testTakeScreenShot() {
+    //     boolean isSuccess = ScreenShotUltil.takeScreenShot(
+    //             "/tmp/screenshot.png");
+    //     assertThat(isSuccess).isEqualTo(true);
+    // }
 
     @Test(description = "Compare screenshot")
     public void testCompareScreenshot() {

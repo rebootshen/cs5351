@@ -12,6 +12,7 @@ import thiagodnf.jacof.util.ExecutionStats;
 import cs.test_automation.reports.TestNGFile;
 
 import java.util.Arrays;
+import java.nio.file.Paths;
 
 public class AcoRun {
 
@@ -28,12 +29,25 @@ public class AcoRun {
 	public static void main(String[] args) throws ParseException, IOException {
 
 		System.out.println("AcoRun !");
+
+		System.out.println("Working Directory = " + System.getProperty("user.dir"));
+		String str1 = Paths.get(".").toAbsolutePath().normalize().toString();
+		boolean var1 = str1.endsWith("server");
+		System.out.println("Current relative path is in server: " + var1);
+
+		String tspfile = null;
+		if (str1.endsWith("server")) {
+			tspfile = "src/main/resources/problems/tsp/cityu-new10.tsp";
+		}else{
+			tspfile = "server/src/main/resources/problems/tsp/cityu-new10.tsp";
+		}
+
 		TestNGFile ngFile = new TestNGFile();
 		//acorun.generateTspDataFile();
 		
 		//String instance = "src/main/resources/problems/tsp/oliver30.tsp";
-		String instance = "src/main/resources/problems/tsp/cityu-new10.tsp";
-		Problem problem = new TravellingSalesmanProblem(instance);
+		//String instance = "src/main/resources/problems/tsp/cityu-new10.tsp";
+		Problem problem = new TravellingSalesmanProblem(tspfile);
 		RankBasedAntSystem aco = new RankBasedAntSystem(problem);
 
 		aco.setNumberOfAnts(10);

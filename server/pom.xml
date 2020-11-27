@@ -189,10 +189,6 @@
                   </goals>  
                   <configuration>  
                    <mainClass>cs.test_automation.AcoRun</mainClass>  
-                   <arguments>  
-                    <argument>arg0</argument>  
-                    <argument>arg1</argument>  
-                   </arguments>  
                   </configuration>  
                  </execution>  
                 </executions>  
