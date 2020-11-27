@@ -67,7 +67,15 @@ public class TestNGFile {
 		File file = null;
 		try {
 			//File parentDirectory = new File(new URI(url.toString()));
-			file = new File("src/main/resources/suites/testng-new.xml");
+
+			String testngfile = null;
+			String str1 = Paths.get(".").toAbsolutePath().normalize().toString();
+			if (str1.endsWith("server")) {
+				testngfile = "src/main/resources/suites/testng-new.xml";
+			}else{
+				testngfile = "server/src/main/resources/suites/testng-new.xml";
+			}
+			file = new File(testngfile);
 			//file = new File(parentDirectory, "testng-new.xml");
 			//file = new File(url.toURI());
 		} catch (Exception e) { 
