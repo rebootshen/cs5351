@@ -17,6 +17,10 @@ Apache Maven 3.6.3
 
 java version "1.8.0_241"
 
+Install dependecies
+```
+mvn install -DskipTests=true
+```
 
 ## Commands:
 ```
