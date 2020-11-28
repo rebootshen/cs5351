@@ -7,6 +7,9 @@ This project is a multiple module maven project.
 - server/             : main class hold here to generate TSP data file and testng config file
 - pom.xml             : maven-surefire-plugin and exec-maven-plugin will trigger main processes
 
+## Demo Video link
+
+https://drive.google.com/file/d/1qdvSwOMFN8G6IF-EH69IsNiQrs10aeNn/view?usp=sharing
 
 ## Prerequisite:
 
